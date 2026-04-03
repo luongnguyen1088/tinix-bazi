@@ -7,7 +7,9 @@ import QueTimeline from './components/QueTimeline';
 import QueShareCard from './components/QueShareCard';
 import './QuePage.css';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8888';
+import API_CONFIG from '../../config/api';
+
+const API_BASE = API_CONFIG.HOST;
 
 
 

@@ -7,16 +7,12 @@
 const isProduction = window.location.hostname === 'huyencobattu.com' ||
     window.location.hostname === 'www.huyencobattu.com';
 
-// API Base URL - adjust based on environment
-// In production, API should be on the same domain or a specific API subdomain
-const API_HOST = isProduction
-    ? `${window.location.protocol}//${window.location.hostname}` // Same host, port 8888
-    : 'http://localhost:8888';
+// API Base URL - use relative path for portability and prod-readiness
+// Vite dev server proxies /api to backends
+const API_HOST = ''; 
 
-// If you want to use a subdomain like api.huyencobattu.com, uncomment below:
-// const API_HOST = isProduction 
-//     ? 'https://api.huyencobattu.com'
-//     : 'http://localhost:8888';
+// Alternatively, for truly relative paths that work behind proxies:
+// const API_HOST = ''; 
 
 // Export API endpoints
 export const API_CONFIG = {

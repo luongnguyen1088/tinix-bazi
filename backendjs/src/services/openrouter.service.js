@@ -69,9 +69,21 @@ class OpenRouterService {
                 const data = await response.json();
                 const content = data.choices?.[0]?.message?.content || '';
 
+                if (!content || content.trim().length < 10) {
+                    throw new Error('Empty or too short response from AI');
+                }
+
                 console.log(`[OpenRouter] Success on attempt ${attempt}`);
                 // Split response into paragraphs for frontend display
-                return this.formatResponse(content);
+                const formatted = this.formatResponse(content);
+                
+                // If format failed to find follow-ups, maybe try again? 
+                // Only if it's really short or looks wrong
+                if (formatted.answer.length === 1 && formatted.answer[0].includes('Xin lỗi') && attempt < this.maxRetries) {
+                   throw new Error('Interpretation malformed or rejected by AI');
+                }
+
+                return formatted;
             } catch (error) {
                 lastError = error;
                 console.error(`[OpenRouter] Attempt ${attempt} failed:`, error.message);
@@ -109,7 +121,12 @@ class OpenRouterService {
             message.includes('econnrefused') ||
             message.includes('etimedout') ||
             message.includes('fetch failed') ||
-            message.includes('other side closed')
+            message.includes('other side closed') ||
+            message.includes('empty') || // Custom empty response error
+            message.includes('too short') ||
+            message.includes('invalid json') || // JSON parsing errors
+            message.includes('malformed') ||
+            message.includes('rejected')
         );
     }
 
@@ -536,106 +553,95 @@ ${luckInfo}
         
         Yêu cầu: Viết bản luận giải thật chi tiết, sử dụng văn phong Bát Tự chuyên nghiệp (như một bậc thầy thực thụ), tập trung vào việc bóc tách các vấn đề thực tế giữa hai người. Trả về kết quả JSON chính xác.`;
 
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), this.timeout);
-
-            const response = await fetch(OPENROUTER_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.apiKey}`,
-                    'HTTP-Referer': 'https://huyencobattu.com',
-                    'X-Title': 'BaZi Matching'
-                },
-                body: JSON.stringify({
-                    model: this.model,
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        { role: 'user', content: userPrompt }
-                    ],
-                    response_format: { type: "json_object" },
-                    max_tokens: 2000,
-                    temperature: 0.7
-                }),
-                signal: controller.signal
-            });
-
-            clearTimeout(timeoutId);
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`OpenRouter API error: ${response.status} - ${errorText}`);
-            }
-
-            const data = await response.json();
-            const content = data.choices?.[0]?.message?.content;
-
-            if (!content) throw new Error('Empty response from AI');
-
-            // Use cleanAndParseJSON with validation
+        let lastError;
+        for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
             try {
-                const parsedResult = this.cleanAndParseJSON(content);
-                console.log('[OpenRouter/Matching] Successfully parsed and validated JSON response');
-                return parsedResult;
-            } catch (jsonError) {
-                console.error('[OpenRouter/Matching] JSON parsing failed:', jsonError.message);
-                console.error('[OpenRouter/Matching] Returning fallback response');
+                console.log(`[OpenRouter/Matching] Attempt ${attempt}/${this.maxRetries}...`);
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
-                // Return a valid fallback structure instead of throwing
-                return {
-                    totalScore: 50,
-                    assessment: {
-                        level: 'neutral',
-                        title: 'Cần phân tích thêm',
-                        summary: 'Thầy đang gặp chút khó khăn trong việc phân tích chi tiết. Vui lòng thử lại hoặc liên hệ hỗ trợ.',
-                        icon: '🔮'
+                const response = await fetch(OPENROUTER_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${this.apiKey}`,
+                        'HTTP-Referer': 'https://huyencobattu.com',
+                        'X-Title': 'BaZi Matching'
                     },
-                    breakdown: {
-                        element: { score: 15, maxScore: 30, description: 'Chưa phân tích được chi tiết', quality: 'neutral' },
-                        ganzhi: { score: 12, maxScore: 25, details: [], quality: 'neutral' },
-                        shishen: { score: 12, maxScore: 25, details: [], quality: 'neutral' },
-                        star: { score: 10, maxScore: 20, details: [], quality: 'neutral' }
-                    },
-                    aspects: [
-                        { type: 'romance', icon: '💕', title: 'Tình Cảm', score: 50, description: 'Cần xem xét thêm' },
-                        { type: 'communication', icon: '💬', title: 'Giao Tiếp', score: 50, description: 'Cần xem xét thêm' },
-                        { type: 'finance', icon: '💰', title: 'Tài Chính', score: 50, description: 'Cần xem xét thêm' }
-                    ],
-                    advice: [
-                        { type: 'neutral', text: 'Hãy kiên nhẫn và thử lại sau. Thầy sẽ cố gắng phân tích kỹ hơn cho con.' }
-                    ],
-                    suggestedQuestions: [
-                        "Làm sao để cải thiện mối quan hệ này?",
-                        "Có điều gì cần lưu ý trong thời gian tới?",
-                        "Làm thế nào để hóa giải những xung khắc?"
-                    ]
-                };
+                    body: JSON.stringify({
+                        model: this.model,
+                        messages: [
+                            { role: 'system', content: systemPrompt },
+                            { role: 'user', content: userPrompt }
+                        ],
+                        response_format: { type: "json_object" },
+                        max_tokens: 2000,
+                        temperature: 0.7
+                    }),
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`OpenRouter API error: ${response.status} - ${errorText}`);
+                }
+
+                const data = await response.json();
+                const content = data.choices?.[0]?.message?.content;
+
+                if (!content) throw new Error('Empty response from AI');
+
+                // Use cleanAndParseJSON with validation
+                const parsedResult = this.cleanAndParseJSON(content);
+                console.log(`[OpenRouter/Matching] Success on attempt ${attempt}`);
+                return parsedResult;
+
+            } catch (error) {
+                lastError = error;
+                console.error(`[OpenRouter/Matching] Attempt ${attempt} failed:`, error.message);
+
+                if (attempt < this.maxRetries && this.isRetryableError(error)) {
+                    const waitTime = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
+                    console.log(`[OpenRouter/Matching] Waiting ${waitTime}ms before retry...`);
+                    await new Promise(resolve => setTimeout(resolve, waitTime));
+                } else {
+                    break;
+                }
             }
-        } catch (error) {
-            console.error('[OpenRouter/Matching] Fatal error:', error);
-            // Return fallback instead of throwing to prevent 500 errors
-            return {
-                totalScore: 50,
-                assessment: {
-                    level: 'neutral',
-                    title: 'Lỗi kết nối',
-                    summary: 'Thầy đang gặp sự cố kỹ thuật. Vui lòng thử lại sau.',
-                    icon: '⚠️'
-                },
-                breakdown: {
-                    element: { score: 15, maxScore: 30, description: 'Không thể phân tích', quality: 'neutral' },
-                    ganzhi: { score: 12, maxScore: 25, details: [], quality: 'neutral' },
-                    shishen: { score: 12, maxScore: 25, details: [], quality: 'neutral' },
-                    star: { score: 10, maxScore: 20, details: [], quality: 'neutral' }
-                },
-                aspects: [],
-                advice: [
-                    { type: 'warning', text: 'Hệ thống đang gặp sự cố. Linh thạch của bạn sẽ được hoàn lại.' }
-                ],
-                suggestedQuestions: []
-            };
         }
+
+        console.error('[OpenRouter/Matching] All attempts failed, returning fallback');
+        // Return a valid fallback structure instead of throwing
+        return {
+            totalScore: 50,
+            assessment: {
+                level: 'neutral',
+                title: 'Cần phân tích thêm',
+                summary: 'Thầy đang gặp chút khó khăn trong việc phân tích chi tiết. Vui lòng thử lại hoặc liên hệ hỗ trợ.',
+                icon: '🔮'
+            },
+            breakdown: {
+                element: { score: 15, maxScore: 30, description: 'Chưa phân tích được chi tiết', quality: 'neutral' },
+                ganzhi: { score: 12, maxScore: 25, details: [], quality: 'neutral' },
+                shishen: { score: 12, maxScore: 25, details: [], quality: 'neutral' },
+                star: { score: 10, maxScore: 20, details: [], quality: 'neutral' }
+            },
+            aspects: [
+                { type: 'romance', icon: '💕', title: 'Tình Cảm', score: 50, description: 'Cần xem xét thêm' },
+                { type: 'communication', icon: '💬', title: 'Giao Tiếp', score: 50, description: 'Cần xem xét thêm' },
+                { type: 'finance', icon: '💰', title: 'Tài Chính', score: 50, description: 'Cần xem xét thêm' }
+            ],
+            advice: [
+                { type: 'neutral', text: 'Hãy kiên nhẫn và thử lại sau. Thầy sẽ cố gắng phân tích kỹ hơn cho con.' }
+            ],
+            suggestedQuestions: [
+                "Làm sao để cải thiện mối quan hệ này?",
+                "Có điều gì cần lưu ý trong thời gian tới?",
+                "Làm thế nào để hóa giải những xung khắc?"
+            ]
+        };
     }
 
     /**
@@ -652,10 +658,22 @@ ${luckInfo}
 
         // Remove markdown code blocks (```json ... ``` or ``` ... ```)
         let cleaned = content.trim();
-        const codeBlockMatch = cleaned.match(/^```(?:json)?\s*\n?([\s\S]*?)\n?```$/m);
+        
+        // More robust markdown block extraction
+        const codeBlockMatch = cleaned.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/);
         if (codeBlockMatch) {
             cleaned = codeBlockMatch[1].trim();
-            console.log('[JSON Cleaner] Removed markdown code block wrapper');
+            console.log('[JSON Cleaner] Extracted content from markdown code block');
+        }
+
+        // If it still looks like it has a preamble (e.g. "Here is the JSON: { ... }"), try to find the actual JSON start
+        if (!cleaned.startsWith('{') && cleaned.includes('{')) {
+            const firstBrace = cleaned.indexOf('{');
+            const lastBrace = cleaned.lastIndexOf('}');
+            if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+                cleaned = cleaned.substring(firstBrace, lastBrace + 1);
+                console.log('[JSON Cleaner] Extracted content between first and last curly braces');
+            }
         }
 
         // Try to parse JSON
@@ -664,7 +682,8 @@ ${luckInfo}
             parsed = JSON.parse(cleaned);
         } catch (parseError) {
             console.error('[JSON Parse Error]', parseError.message);
-            console.error('[Raw Content Preview]', content.substring(0, 500));
+            // Log a bit more for debugging
+            console.error('[Cleaned Content Preview]', cleaned.substring(0, 200));
             throw new Error(`Invalid JSON from LLM: ${parseError.message}`);
         }
 
