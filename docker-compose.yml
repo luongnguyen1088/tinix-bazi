@@ -11,6 +11,8 @@ services:
       - OPENROUTER_MODEL=deepseek/deepseek-chat
     volumes:
       - bazi-data:/app/data
+    networks:
+      - bazi-stack-network
 
   frontend:
     build:
@@ -18,6 +20,12 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend
+    networks:
+      - bazi-stack-network
+
+networks:
+  bazi-stack-network:
+    driver: bridge
 
 volumes:
   bazi-data:
