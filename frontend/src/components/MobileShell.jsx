@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -299,10 +299,41 @@ const MobileShell = ({ children, hasData, onClearData }) => {
   const isHomePage = location.pathname === '/' || location.pathname === '/input';
   const pageClass = location.pathname.split('/').filter(Boolean).join('-') || 'home';
   const currentMeta = getRouteMeta(location.pathname);
+  const topFixedRef = useRef(null);
+  const [topOffset, setTopOffset] = useState(96);
+
+  useEffect(() => {
+    const headerEl = topFixedRef.current;
+    if (!headerEl) return undefined;
+
+    const updateOffset = () => {
+      const nextOffset = Math.ceil(headerEl.getBoundingClientRect().height);
+      if (nextOffset > 0) {
+        setTopOffset(nextOffset);
+      }
+    };
+
+    updateOffset();
+
+    const observer = new ResizeObserver(() => {
+      updateOffset();
+    });
+
+    observer.observe(headerEl);
+    window.addEventListener('resize', updateOffset);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateOffset);
+    };
+  }, [location.pathname, hasData]);
 
   return (
-    <div className={`mobile-shell ${pageClass}-page ${isHomePage ? 'home-page' : ''}`}>
-      <div className="mobile-top-fixed">
+    <div
+      className={`mobile-shell ${pageClass}-page ${isHomePage ? 'home-page' : ''}`}
+      style={{ '--mobile-top-offset': `${topOffset}px` }}
+    >
+      <div className="mobile-top-fixed" ref={topFixedRef}>
         <PremiumMobileHeader currentMeta={currentMeta} hasData={hasData} />
       </div>
       <main className="mobile-content">

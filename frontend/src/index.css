@@ -13102,15 +13102,18 @@ select.dp-year-select {
 }
 
 .mobile-content {
-  padding: 188px 16px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 28px);
+  padding:
+    calc(var(--mobile-top-offset, 96px) + 12px)
+    16px
+    calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 28px);
 }
 
 .home-page .mobile-content {
-  padding-top: 96px;
+  padding-top: calc(var(--mobile-top-offset, 96px) + 8px);
 }
 
 .duyenso-page .mobile-content {
-  padding-top: 188px;
+  padding-top: calc(var(--mobile-top-offset, 96px) + 12px);
 }
 
 .mobile-bottom-nav {
