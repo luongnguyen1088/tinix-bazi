@@ -2,8 +2,10 @@ const BASE_URL = '/api';
 
 export const apiClient = {
     get: async (endpoint, params = {}) => {
-        // Use window.location.origin to ensure relative path matches current page
-        const url = new URL(BASE_URL + endpoint, window.location.origin);
+        const token = localStorage.getItem('auth_token');
+        // If endpoint starts with /api, remove it to avoid duplicates with BASE_URL
+        const cleanEndpoint = endpoint.startsWith('/api') ? endpoint.substring(4) : endpoint;
+        const url = new URL(BASE_URL + cleanEndpoint, window.location.origin);
 
         // Append query params
         Object.keys(params).forEach(key => {
@@ -14,11 +16,12 @@ export const apiClient = {
 
         console.log(`[API] Fetching: ${url.toString()}`);
 
-        const response = await fetch(url.toString(), {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+
+        const response = await fetch(url.toString(), { headers });
 
         if (!response.ok) {
             throw new Error(`API Error: ${response.status} ${response.statusText}`);
@@ -27,15 +30,20 @@ export const apiClient = {
     },
 
     post: async (endpoint, data = {}) => {
-        const url = new URL(BASE_URL + endpoint, window.location.origin);
+        const token = localStorage.getItem('auth_token');
+        const cleanEndpoint = endpoint.startsWith('/api') ? endpoint.substring(4) : endpoint;
+        const url = new URL(BASE_URL + cleanEndpoint, window.location.origin);
 
         console.log(`[API] Posting: ${url.toString()}`);
 
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+
         const response = await fetch(url.toString(), {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers,
             body: JSON.stringify(data)
         });
 

@@ -15,7 +15,7 @@ const TopupModal = ({ isOpen, onClose }) => {
     const fetchPaymentInfo = async () => {
         setLoading(true);
         try {
-            const data = await apiClient.get('/api/payment/info');
+            const data = await apiClient.get('/payment/info');
             setPaymentInfo(data);
             setError(null);
         } catch (err) {
