@@ -399,7 +399,7 @@ const ConsultantPage = ({ userData }) => {
                                             setShowTopupModal(true);
                                         }}
                                     >
-                                        💳 Nạp qua VietQR (Tự chọn số tiền)
+                                        💳 Nạp qua VietQR (Gói 49K / 99K)
                                     </button>
                                 </div>
                             </div>
