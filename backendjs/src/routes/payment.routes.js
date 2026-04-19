@@ -14,16 +14,16 @@ const TOPUP_PACKAGES = [
         id: 'starter_49k',
         name: 'Gói Khởi Mệnh',
         amount_vnd: 49000,
-        credits: 500,
-        bonus_credits: 10,
+        credits: 100,
+        bonus_credits: 0,
         badge: 'Phổ biến'
     },
     {
         id: 'pro_99k',
         name: 'Gói Hộ Mệnh',
         amount_vnd: 99000,
-        credits: 1200,
-        bonus_credits: 210,
+        credits: 200,
+        bonus_credits: 50,
         badge: 'Tiết kiệm nhất'
     }
 ];

@@ -188,7 +188,7 @@ class DatabaseService {
                 email TEXT UNIQUE NOT NULL,
                 password_hash TEXT NOT NULL,
                 name TEXT,
-                credits INTEGER DEFAULT 100,
+                credits INTEGER DEFAULT 20,
                 is_admin INTEGER DEFAULT 0,
                 bazi_data TEXT,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,

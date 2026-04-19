@@ -179,7 +179,7 @@ router.post('/register', async (req, res) => {
             await dbService.createSession(token, fallbackUser);
             console.log(`[AUTH] Register success (fallback): ${email} -> User ID ${userId}`);
             return res.json({
-                message: 'Đăng ký thành công! Bạn nhận được 100 Linh Thạch',
+                message: 'Đăng ký thành công! Bạn nhận được 20 Linh Thạch',
                 token,
                 user: fallbackUser
             });
@@ -194,7 +194,7 @@ router.post('/register', async (req, res) => {
         console.log(`[AUTH] Register success: ${email} -> User ID ${userId}`);
 
         res.json({
-            message: 'Đăng ký thành công! Bạn nhận được 100 Linh Thạch',
+            message: 'Đăng ký thành công! Bạn nhận được 20 Linh Thạch',
             token,
             user: { id: user.id, email: user.email, name: user.name, credits: user.credits, is_admin: user.is_admin }
         });
@@ -392,7 +392,7 @@ router.post('/profile', authMiddleware, async (req, res) => {
 // POST /api/auth/request-credits - User requests more credits
 router.post('/request-credits', authMiddleware, async (req, res) => {
     try {
-        const amount = 50; // Fixed amount per request
+        const amount = 10; // Fixed amount per request
         const requestId = await dbService.createCreditRequest(req.user.id, amount);
         res.json({
             message: 'Yêu cầu đã được gửi, vui lòng chờ Admin phê duyệt',
