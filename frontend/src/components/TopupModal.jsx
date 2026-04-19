@@ -85,8 +85,8 @@ const TopupModal = ({ isOpen, onClose }) => {
 
                 <div className="modal-footer">
                     <button className="btn-secondary" onClick={onClose}>Đóng</button>
-                    <button className="btn-primary" onClick={() => window.open('https://m.me/luongnguyen.info', '_blank')}>
-                        Gửi xác nhận qua Messenger
+                    <button className="btn-primary" onClick={() => window.open('https://zalo.me/0905691988', '_blank')}>
+                        Gửi xác nhận qua Zalo
                     </button>
                 </div>
             </div>
