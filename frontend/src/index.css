@@ -12760,7 +12760,11 @@ select.dp-year-select {
   }
 
   /* Ensure the date-picker-overlay doesn't block touches */
-  .date-picker-over
+  .date-picker-overlay {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Credit Management Styles */
 .btn-add-credits-mini {
   width: 20px;
