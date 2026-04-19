@@ -7,6 +7,9 @@ const express = require('express');
 const router = express.Router();
 const crypto = require('crypto');
 const dbService = require('../services/database.service');
+const { OAuth2Client } = require('google-auth-library');
+
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Simple hash function (for demo - use bcrypt in production)
 const hashPassword = (password) => {
@@ -240,6 +243,64 @@ router.post('/login', async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+});
+
+// POST /api/auth/google - Social Login/Registration
+router.post('/google', async (req, res) => {
+    console.log('--- GOOGLE AUTH REQUEST ---');
+    try {
+        const { credential } = req.body;
+        if (!credential) {
+            return res.status(400).json({ error: 'Missing Google credential' });
+        }
+
+        // Verify Google token
+        const ticket = await googleClient.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID
+        });
+
+        const payload = ticket.getPayload();
+        const { email, name, sub: googleId, picture } = payload;
+
+        console.log(`[AUTH] Google login attempt: ${email}`);
+
+        // Check if user exists
+        let user = await dbService.getUserByEmail(email.toLowerCase().trim());
+        let userId;
+
+        if (!user) {
+            console.log(`[AUTH] Creating new user for Google sign-in: ${email}`);
+            // Create user with random password since they login via Google
+            const randomPass = crypto.randomBytes(16).toString('hex');
+            const passwordHash = hashPassword(randomPass);
+            
+            userId = await dbService.createUser(email.toLowerCase().trim(), passwordHash, name || '');
+            
+            // Google users get their initial credits from createUser (usually 100)
+            user = await dbService.getUserById(userId);
+        } else {
+            userId = user.id;
+        }
+
+        // Create session
+        const token = generateToken();
+        const userData = { id: user.id, email: user.email, name: user.name, credits: user.credits, is_admin: user.is_admin };
+        await dbService.createSession(token, userData);
+
+        await dbService.updateLastLogin(userId);
+
+        console.log(`[AUTH] Google Login Success: "${email}" (ID: ${userId})`);
+
+        res.json({
+            message: 'Đăng nhập Google thành công',
+            token,
+            user: { id: user.id, email: user.email, name: user.name, credits: user.credits, is_admin: user.is_admin }
+        });
+    } catch (error) {
+        console.error('[AUTH] Google Auth error:', error.message);
+        res.status(401).json({ error: 'Xác thực Google thất bại' });
     }
 });
 

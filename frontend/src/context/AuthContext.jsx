@@ -128,6 +128,26 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const socialLogin = async (provider, credential) => {
+        const res = await fetch(`${API_BASE}/google`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ credential })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.error || 'Đăng nhập Google thất bại');
+        }
+
+        localStorage.setItem('auth_token', data.token);
+        setToken(data.token);
+        setUser(data.user);
+
+        return data;
+    };
+
     return (
         <AuthContext.Provider value={{
             user,
@@ -135,6 +155,7 @@ export const AuthProvider = ({ children }) => {
             loading,
             login,
             register,
+            socialLogin,
             logout,
             refreshUser,
             updateCredits,

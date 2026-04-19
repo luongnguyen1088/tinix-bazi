@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { API_CONFIG } from '../config/api';
+import { GoogleLogin } from '@react-oauth/google';
 
 const API_BASE = API_CONFIG.AUTH;
 
@@ -18,7 +19,7 @@ const AuthModal = ({ onClose, onSuccess }) => {
     const [captchaAnswer, setCaptchaAnswer] = useState('');
     const [loadingCaptcha, setLoadingCaptcha] = useState(false);
 
-    const { login, register } = useAuth();
+    const { login, register, socialLogin } = useAuth();
 
     // Fetch CAPTCHA when switching to register mode
     useEffect(() => {
@@ -168,6 +169,30 @@ const AuthModal = ({ onClose, onSuccess }) => {
                         {loading ? 'Đang xử lý...' : (mode === 'login' ? 'Đăng Nhập' : 'Đăng Ký')}
                     </button>
                 </form>
+
+                <div className="auth-social-separator">
+                    <span>Hoặc tiếp tục với</span>
+                </div>
+
+                <div className="auth-social-actions">
+                    <GoogleLogin
+                        onSuccess={credentialResponse => {
+                            socialLogin('google', credentialResponse.credential)
+                                .then(() => {
+                                    onSuccess?.();
+                                    onClose();
+                                })
+                                .catch(err => setError(err.message));
+                        }}
+                        onError={() => {
+                            setError('Đăng nhập Google thất bại');
+                        }}
+                        theme="filled_blue"
+                        shape="pill"
+                        text="continue_with"
+                        width="100%"
+                    />
+                </div>
 
                 <div className="auth-footer">
                     {mode === 'login' ? (

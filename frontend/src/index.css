@@ -12850,3 +12850,7 @@ select.dp-year-select {
   0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
+.auth-social-separator { position: relative; text-align: center; margin: 20px 0; }
+.auth-social-separator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255, 255, 255, 0.1); }
+.auth-social-separator span { position: relative; background: #1a1a2e; padding: 0 10px; color: #94a3b8; font-size: 0.85rem; }
+.auth-social-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
