@@ -26,6 +26,7 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
     const [showTopupModal, setShowTopupModal] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = React.useRef(null);
+    const dropdownMenuRef = React.useRef(null);
     const [notification, setNotification] = useState(null);
     const [prevCredits, setPrevCredits] = useState(null);
 
@@ -56,7 +57,10 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
     // Handle click outside to close dropdown
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            const isClickOnTrigger = dropdownRef.current && dropdownRef.current.contains(event.target);
+            const isClickOnMenu = dropdownMenuRef.current && dropdownMenuRef.current.contains(event.target);
+            
+            if (!isClickOnTrigger && !isClickOnMenu) {
                 setShowDropdown(false);
             }
         };
@@ -163,28 +167,28 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
                 {/* User Dropdown Menu */}
                 {showDropdown && isAuthenticated && createPortal(
                     <div className="user-dropdown-overlay" onClick={() => setShowDropdown(false)}>
-                        <div className="desktop-user-dropdown" onClick={(e) => e.stopPropagation()}>
+                        <div className="desktop-user-dropdown" ref={dropdownMenuRef} onClick={(e) => e.stopPropagation()}>
                             <div className="dropdown-user-info">
                                 <strong>{user?.role === 'admin' ? '🔥 System Admin' : (user?.name || user?.email)}</strong>
                                 <p>💎 {user?.credits || 0} Linh Thạch</p>
                             </div>
                             <hr />
-                            <button className="dropdown-item" onClick={() => { setShowTopupModal(true); setShowDropdown(false); }}>
+                            <button className="dropdown-item" onClick={(e) => { e.stopPropagation(); setShowTopupModal(true); setShowDropdown(false); }}>
                                 <span className="item-icon">💳</span> Nạp Linh Thạch (VietQR)
                             </button>
-                            <button className="dropdown-item" onClick={() => { setShowProfileModal(true); setShowDropdown(false); }}>
+                            <button className="dropdown-item" onClick={(e) => { e.stopPropagation(); setShowProfileModal(true); setShowDropdown(false); }}>
                                 <span className="item-icon">👤</span> Thông tin tài khoản
                             </button>
-                            <button className="dropdown-item" onClick={() => { navigate('/lich-su'); setShowDropdown(false); }}>
+                            <button className="dropdown-item" onClick={(e) => { e.stopPropagation(); navigate('/lich-su'); setShowDropdown(false); }}>
                                 <span className="item-icon">📜</span> Lịch sử tư vấn
                             </button>
                             {user?.role === 'admin' && (
-                                <button className="dropdown-item" onClick={() => { navigate('/admin'); setShowDropdown(false); }}>
+                                <button className="dropdown-item" onClick={(e) => { e.stopPropagation(); navigate('/admin'); setShowDropdown(false); }}>
                                     <span className="item-icon">🛡️</span> Trang Quản Trị
                                 </button>
                             )}
                             <hr />
-                            <button className="dropdown-item logout" onClick={() => { logout(); setShowDropdown(false); }}>
+                            <button className="dropdown-item logout" onClick={(e) => { e.stopPropagation(); logout(); setShowDropdown(false); }}>
                                 <span className="item-icon">🚪</span> Đăng xuất
                             </button>
                         </div>
