@@ -14,138 +14,108 @@ const headerTabs = [
   { id: 'wisdom', path: '/dientich', label: 'ĐIỂN TỊCH', icon: '📜' },
 ];
 
-// Status Bar Component - Now includes user info
-const StatusBar = () => {
-  const now = new Date();
-  const timeStr = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
-  const { user, isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate();
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showProfileModal, setShowProfileModal] = useState(false);
-  const [showTopupModal, setShowTopupModal] = useState(false);
+// Simplified Premium Header Component
+const PremiumMobileHeader = () => {
+    const { user, isAuthenticated, logout } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [showAuthModal, setShowAuthModal] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
+    const [showProfileModal, setShowProfileModal] = useState(false);
+    const [showTopupModal, setShowTopupModal] = useState(false);
 
-  const handleLogout = async () => {
-    await logout();
-    setShowUserMenu(false);
-    navigate('/');
-  };
+    const isHomePage = location.pathname === '/' || location.pathname === '/input';
 
-  return (
-    <>
-      <div className="mobile-status-bar">
-        <span className="status-time">{timeStr}</span>
-        <span className="status-notch"></span>
-        <div className="status-right">
-          {isAuthenticated ? (
-            <div className="user-info-compact" onClick={() => setShowUserMenu(!showUserMenu)}>
-              <span className="user-credits">💎 {user?.credits || 0}</span>
-              <span className="user-avatar">👤</span>
+    const handleLogout = async () => {
+        await logout();
+        setShowUserMenu(false);
+        navigate('/');
+    };
+
+    return (
+        <header className="mobile-premium-header">
+            <div className="header-main-row">
+                <div className="header-brand" onClick={() => navigate('/')}>
+                    <span className="brand-logo">☯️</span>
+                    <h1 className="brand-text">MỆNH SỐ</h1>
+                </div>
+
+                <div className="header-actions">
+                    {isAuthenticated ? (
+                        <div className="user-pill" onClick={() => setShowUserMenu(!showUserMenu)}>
+                            <span className="pill-credits">💎 {user?.credits || 0}</span>
+                            <span className="pill-avatar">👤</span>
+                        </div>
+                    ) : (
+                        <button className="btn-login-premium" onClick={() => setShowAuthModal(true)}>
+                            ĐĂNG NHẬP
+                        </button>
+                    )}
+                </div>
             </div>
-          ) : (
-            <button className="btn-login-compact" onClick={() => setShowAuthModal(true)}>
-              Đăng nhập
-            </button>
-          )}
-        </div>
-      </div>
 
-      {/* User Dropdown Menu */}
-      {showUserMenu && isAuthenticated && createPortal(
-        <div className="user-dropdown-overlay" onClick={() => setShowUserMenu(false)}>
-          <div className="user-dropdown" onClick={(e) => e.stopPropagation()}>
-            <div className="dropdown-header">
-              <span className="dropdown-avatar">👤</span>
-              <div className="dropdown-info">
-                <span className="dropdown-name">{user?.name || 'Mệnh chủ'}</span>
-                <span className="dropdown-email">{user?.email}</span>
-              </div>
-            </div>
-            <div className="dropdown-credits">
-              <span className="credits-label">Linh Thạch</span>
-              <span className="credits-value">💎 {user?.credits || 0}</span>
-            </div>
-            <div className="dropdown-actions">
-              <button className="dropdown-btn" onClick={() => { setShowTopupModal(true); setShowUserMenu(false); }}>
-                💳 Nạp Linh Thạch (VietQR)
-              </button>
-              <button className="dropdown-btn" onClick={() => { setShowProfileModal(true); setShowUserMenu(false); }}>
-                👤 Thông tin tài khoản
-              </button>
-              <button className="dropdown-btn" onClick={() => { navigate('/lich-su'); setShowUserMenu(false); }}>
-                📜 Lịch sử tư vấn
-              </button>
-              <button className="dropdown-btn logout" onClick={handleLogout}>
-                🚪 Đăng xuất
-              </button>
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
+            {!isHomePage && (
+                <nav className="header-sub-nav">
+                    {headerTabs.map(tab => (
+                        <NavLink
+                            key={tab.id}
+                            to={{ pathname: tab.path, search: location.search }}
+                            className={({ isActive }) => `sub-nav-item ${isActive ? 'active' : ''}`}
+                        >
+                            {tab.label}
+                        </NavLink>
+                    ))}
+                </nav>
+            )}
 
-      {showAuthModal && createPortal(
-        <AuthModal
-          onClose={() => setShowAuthModal(false)}
-          onSuccess={() => setShowAuthModal(false)}
-        />,
-        document.body
-      )}
+            {/* Portals and Modals stay at the same logic level */}
+            {showUserMenu && isAuthenticated && createPortal(
+                <div className="user-dropdown-overlay" onClick={() => setShowUserMenu(false)}>
+                    <div className="user-dropdown animate-pop" onClick={(e) => e.stopPropagation()}>
+                        <div className="dropdown-header">
+                            <span className="dropdown-avatar">👤</span>
+                            <div className="dropdown-info">
+                                <span className="dropdown-name">{user?.name || 'Mệnh chủ'}</span>
+                                <span className="dropdown-email">{user?.email}</span>
+                            </div>
+                        </div>
+                        <div className="dropdown-credits">
+                            <span className="credits-label">Linh Thạch</span>
+                            <span className="credits-value">💎 {user?.credits || 0}</span>
+                        </div>
+                        <div className="dropdown-actions">
+                            <button className="dropdown-btn" onClick={() => { setShowTopupModal(true); setShowUserMenu(false); }}>
+                                💳 Nạp Linh Thạch (VietQR)
+                            </button>
+                            <button className="dropdown-btn" onClick={() => { setShowProfileModal(true); setShowUserMenu(false); }}>
+                                👤 Thông tin tài khoản
+                            </button>
+                            <button className="dropdown-btn" onClick={() => { navigate('/lich-su'); setShowUserMenu(false); }}>
+                                📜 Lịch sử tư vấn
+                            </button>
+                            <button className="dropdown-btn logout" onClick={handleLogout}>
+                                🚪 Đăng xuất
+                            </button>
+                        </div>
+                    </div>
+                </div>,
+                document.body
+            )}
 
-      {showProfileModal && createPortal(
-        <UserProfileModal
-          isOpen={showProfileModal}
-          onClose={() => setShowProfileModal(false)}
-        />,
-        document.body
-      )}
-
-      {showTopupModal && createPortal(
-        <TopupModal
-          isOpen={showTopupModal}
-          onClose={() => setShowTopupModal(false)}
-        />,
-        document.body
-      )}
-    </>
-  );
-};
-
-// Brand Bar Component
-const BrandBar = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const isHomePage = location.pathname === '/' || location.pathname === '/input';
-
-  if (isHomePage) return null;
-
-  return (
-    <div className="mobile-brand-bar" onClick={() => navigate('/')}>
-      <h1 className="mobile-mini-brand">MỆNH SỐ</h1>
-    </div>
-  );
-};
-
-// Header Navigation Component - Simplified
-const HeaderNav = () => {
-  const location = useLocation();
-
-  return (
-    <header className="mobile-header">
-      <nav className="header-nav">
-        {headerTabs.map(tab => (
-          <NavLink
-            key={tab.id}
-            to={{ pathname: tab.path, search: location.search }}
-            className={({ isActive }) => `header-nav-item ${isActive ? 'active' : ''}`}
-          >
-            <span className="nav-icon">{tab.icon}</span>
-            <span className="nav-label">{tab.label}</span>
-          </NavLink>
-        ))}
-      </nav>
-    </header>
-  );
+            {showAuthModal && createPortal(
+                <AuthModal onClose={() => setShowAuthModal(false)} onSuccess={() => setShowAuthModal(false)} />,
+                document.body
+            )}
+            {showProfileModal && createPortal(
+                <UserProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} />,
+                document.body
+            )}
+            {showTopupModal && createPortal(
+                <TopupModal isOpen={showTopupModal} onClose={() => setShowTopupModal(false)} />,
+                document.body
+            )}
+        </header>
+    );
 };
 
 // Bottom Navigation Component - Redesigned with center button
@@ -237,9 +207,7 @@ const MobileShell = ({ children, hasData, onClearData }) => {
   return (
     <div className={`mobile-shell ${pageClass}-page ${isHomePage ? 'home-page' : ''}`}>
       <div className="mobile-top-fixed">
-        <StatusBar />
-        <BrandBar />
-        <HeaderNav />
+        <PremiumMobileHeader />
       </div>
       <main className="mobile-content">
         {children}
