@@ -14071,4 +14071,444 @@ select.dp-year-select {
   }
 }
 
+/* ========== Mobile dense refinement ========== */
+@media (max-width: 767px) {
+  .glass-card {
+    border-radius: 14px;
+  }
+
+  .page-header {
+    gap: 0.7rem;
+    padding: 0.95rem 1rem;
+    margin-bottom: 0.9rem;
+    border-radius: 14px;
+  }
+
+  .page-header h2,
+  .page-header.stacked h2 {
+    font-size: 1.1rem;
+  }
+
+  .page-header p,
+  .page-header .subtitle {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .chart-actions-bar {
+    gap: 0.45rem;
+    margin-bottom: 0.65rem;
+    padding: 0;
+  }
+
+  .chart-actions-right {
+    gap: 0.4rem;
+  }
+
+  .chart-top-row {
+    gap: 0.7rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .chart-info-card,
+  .radar-card {
+    padding: 0.85rem 0.9rem;
+    border-radius: 14px;
+  }
+
+  .radar-title {
+    margin-bottom: 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .info-grid {
+    gap: 0.45rem;
+  }
+
+  .info-item {
+    padding: 0.45rem 0.6rem;
+    border-radius: 7px;
+  }
+
+  .info-item .label {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+
+  .info-item .value {
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
+
+  .info-line {
+    gap: 0.65rem;
+    padding: 0.55rem 0;
+    font-size: 0.84rem;
+  }
+
+  .info-label,
+  .pillar-label,
+  .matrix-label {
+    min-width: 88px;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .info-text,
+  .matrix-text,
+  .matrix-text.full-width,
+  .content-row,
+  .card-text,
+  .quote-line,
+  .luan-giai-content p,
+  .info-content,
+  .classic-content,
+  .item-value,
+  .finding-content,
+  .luan-giai-p,
+  .intro-text,
+  .variable-line,
+  .convergence-line,
+  .bullet-text,
+  .luan-giai-warning,
+  .pillar-relation,
+  .life-advice-line,
+  .status-line {
+    font-size: 0.88rem;
+    line-height: 1.58;
+    text-align: left;
+    text-wrap: pretty;
+  }
+
+  .stars-grid,
+  .stars-list {
+    gap: 0.35rem;
+  }
+
+  .pillar-stars {
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .star-tag {
+    font-size: 0.78rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    line-height: 1.45;
+  }
+
+  .cach-cuc-tags {
+    gap: 0.55rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .tag-premium {
+    padding: 5px 9px;
+    font-size: 0.68rem;
+  }
+
+  .napam-row {
+    margin-top: 0.7rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+
+  .napam-title {
+    margin-bottom: 0.55rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+  }
+
+  .napam-items {
+    gap: 0.45rem;
+  }
+
+  .napam-item {
+    padding: 0.45rem 0.35rem;
+    border-radius: 8px;
+  }
+
+  .napam-label {
+    font-size: 0.56rem;
+  }
+
+  .napam-value {
+    font-size: 0.8rem;
+  }
+
+  .luck-cycles-container {
+    margin-top: 0.8rem;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .luck-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .view-toggle {
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .toggle-btn {
+    padding: 6px 10px;
+    font-size: 0.64rem;
+  }
+
+  .cycles-horizontal-scroll,
+  .years-grid {
+    gap: 0.6rem;
+  }
+
+  .cycle-card {
+    padding: 1rem 0.65rem;
+    border-radius: 12px;
+  }
+
+  .cycle-meta,
+  .status,
+  .y-head,
+  .y-footer {
+    font-size: 0.62rem;
+  }
+
+  .cycle-age {
+    margin-bottom: 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .cycle-gan,
+  .cycle-chi {
+    font-size: 1.75rem;
+  }
+
+  .cycle-footer {
+    margin-top: 0.8rem;
+    padding-top: 0.65rem;
+  }
+
+  .shishen {
+    font-size: 0.68rem;
+  }
+
+  .decade-group {
+    border-radius: 12px;
+  }
+
+  .decade-header {
+    padding: 0.95rem 1rem;
+  }
+
+  .decade-title {
+    font-size: 0.9rem;
+  }
+
+  .decade-status {
+    font-size: 0.72rem;
+  }
+
+  .years-grid {
+    padding: 0.9rem;
+  }
+
+  .year-item {
+    padding: 0.9rem 0.45rem;
+    border-radius: 10px;
+  }
+
+  .y-can,
+  .y-chi {
+    font-size: 1.35rem;
+  }
+
+  .personalized-date-module,
+  .auspicious-calendar-module {
+    max-width: 100%;
+  }
+
+  .module-title {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+  }
+
+  .date-picker-bar,
+  .selection-bar {
+    gap: 0.8rem;
+    padding: 0.9rem;
+    margin-bottom: 1rem;
+    border-radius: 14px;
+  }
+
+  .mode-selector-tabs {
+    padding: 0.35rem;
+    margin-bottom: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .mode-tab {
+    padding: 0.62rem 0.55rem;
+    border-radius: 10px;
+  }
+
+  .mode-tab .tab-icon {
+    font-size: 0.95rem;
+  }
+
+  .mode-tab .tab-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+  }
+
+  .activity-bar {
+    gap: 0.65rem;
+    padding: 0.8rem;
+    margin-bottom: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .calendar-header {
+    padding: 0.75rem 0.65rem;
+  }
+
+  .month-name {
+    font-size: 1.1rem;
+  }
+
+  .year-name {
+    font-size: 0.72rem;
+  }
+
+  .calendar-wrapper {
+    padding: 0.45rem !important;
+  }
+
+  .calendar-legend {
+    gap: 0.6rem;
+    padding: 0.2rem;
+  }
+
+  .legend-item {
+    font-size: 0.64rem;
+  }
+
+  .day-details {
+    padding: 0.9rem;
+    margin-top: 0.7rem;
+    border-left-width: 3px;
+    border-radius: 10px;
+  }
+
+  .details-header {
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .details-date {
+    font-size: 0.96rem;
+  }
+
+  .details-status,
+  .details-lunar,
+  .details-canchi,
+  .details-content p,
+  .activity-name,
+  .activity-reasons p {
+    font-size: 0.78rem;
+  }
+
+  .details-content p {
+    margin-bottom: 0.35rem;
+    padding-left: 0.7rem;
+  }
+
+  .activities-breakdown {
+    margin-top: 0.9rem;
+    padding-top: 0.7rem;
+  }
+
+  .activities-breakdown h4 {
+    margin-bottom: 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .activity-item {
+    padding: 0.6rem;
+    margin-bottom: 0.35rem;
+    border-radius: 8px;
+  }
+
+  .article-page {
+    padding: 0.4rem 0 1rem;
+  }
+
+  .article-breadcrumb {
+    margin-bottom: 0.7rem;
+    font-size: 0.74rem;
+  }
+
+  .article-detail {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .article-detail-header,
+  .article-detail-image {
+    margin-bottom: 0.9rem;
+  }
+
+  .article-detail-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.25;
+  }
+
+  .article-detail-meta {
+    gap: 0.6rem;
+    font-size: 0.74rem;
+  }
+
+  .article-detail-content {
+    font-size: 0.9rem;
+    line-height: 1.62;
+  }
+
+  .article-detail-content h2,
+  .article-detail-content h3 {
+    margin: 0.9rem 0 0.55rem 0;
+    font-size: 1rem;
+  }
+
+  .article-related {
+    margin-top: 1rem;
+    padding: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .related-title {
+    margin-bottom: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .related-grid {
+    gap: 0.75rem;
+  }
+
+  .related-item-image {
+    height: 90px;
+    margin-bottom: 0.5rem;
+  }
+
+  .related-item-title {
+    font-size: 0.8rem;
+  }
+}
+
 
