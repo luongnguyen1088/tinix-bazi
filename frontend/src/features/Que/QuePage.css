@@ -1154,3 +1154,181 @@
         gap: 0.45rem;
     }
 }
+
+@media (min-width: 1024px) {
+    .que-page {
+        max-width: 1320px;
+        padding: 0.45rem 0.75rem 90px;
+    }
+
+    .que-header {
+        margin-bottom: 1.1rem;
+        padding: 1.15rem 1.3rem;
+        border-radius: 18px;
+    }
+
+    .que-page-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.12em;
+    }
+
+    .que-page-subtitle {
+        font-size: 0.84rem;
+    }
+
+    .que-cards-grid {
+        gap: 1rem;
+        padding: 0.2rem;
+    }
+
+    .que-card-container {
+        height: 332px;
+    }
+
+    .que-card,
+    .que-card-face {
+        border-radius: 14px;
+    }
+
+    .card-pattern {
+        background-size: 22px 22px;
+    }
+
+    .card-content,
+    .que-card-back {
+        padding: 0.9rem;
+    }
+
+    .card-icon {
+        font-size: 2.4rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+        font-size: 1.08rem;
+        margin-bottom: 0.95rem;
+        letter-spacing: 0.1em;
+    }
+
+    .card-status {
+        gap: 0.35rem;
+        padding: 0.6rem 1rem;
+        border-radius: 16px;
+    }
+
+    .pulse-icon {
+        font-size: 1.25rem;
+    }
+
+    .result-header {
+        padding-bottom: 0.65rem;
+    }
+
+    .result-period {
+        font-size: 0.72rem;
+    }
+
+    .result-quality {
+        font-size: 0.68rem;
+        padding: 0.18rem 0.45rem;
+        border-radius: 999px;
+    }
+
+    .result-main {
+        gap: 0.35rem;
+        padding: 0.35rem 0;
+    }
+
+    .gua-name {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .gua-meaning,
+    .interaction-label {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .result-interaction {
+        padding: 0.4rem 0;
+    }
+
+    .relation-badge,
+    .topic-badge {
+        font-size: 0.64rem;
+        padding: 0.12rem 0.42rem;
+    }
+
+    .result-footer {
+        gap: 0.2rem;
+        padding-top: 0.45rem;
+        font-size: 0.72rem;
+    }
+
+    .history-badge,
+    .new-badge {
+        top: 8px;
+        right: 8px;
+        font-size: 0.62rem;
+        padding: 0.16rem 0.42rem;
+    }
+
+    .reroll-btn {
+        bottom: 6px;
+        right: 6px;
+        font-size: 0.64rem;
+        padding: 0.26rem 0.5rem;
+        border-radius: 7px;
+    }
+
+    .que-timeline-container {
+        margin: 1rem 0 0.9rem;
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+    }
+
+    .timeline-header {
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.45rem;
+    }
+
+    .timeline-header h4 {
+        font-size: 0.96rem;
+    }
+
+    .timeline-type-label {
+        font-size: 0.7rem;
+    }
+
+    .timeline-scroll {
+        gap: 0.75rem;
+        padding: 0.7rem 0.15rem 0.45rem;
+    }
+
+    .timeline-node {
+        min-width: 74px;
+        gap: 0.25rem;
+        padding: 0.6rem;
+        border-radius: 10px;
+    }
+
+    .node-date,
+    .node-name,
+    .node-quality {
+        font-size: 0.62rem;
+    }
+
+    .results-header-actions {
+        gap: 0.55rem;
+    }
+
+    .share-btn,
+    .timeline-toggle-btn {
+        gap: 0.4rem;
+        padding: 0.42rem 0.75rem;
+        font-size: 0.76rem;
+        border-radius: 8px;
+    }
+}
