@@ -12760,11 +12760,7 @@ select.dp-year-select {
   }
 
   /* Ensure the date-picker-overlay doesn't block touches */
-  .date-picker-overlay {
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
+  .date-picker-over
 /* Credit Management Styles */
 .btn-add-credits-mini {
   width: 20px;
@@ -12827,19 +12823,19 @@ select.dp-year-select {
   transform: translateY(-2px);
 }
 
-/* Modal Overlay & Pop Animation */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Ensure Dropdown is clickable and on top */
+.user-dropdown-overlay {
+  z-index: 5000 !important; /* Extremely high */
+  background: transparent !important; /* Invisible to allow background view */
+}
+
+.desktop-user-dropdown {
+  z-index: 5001 !important;
+  pointer-events: auto !important;
+}
+
+.dropdown-item {
+  color: #fff !important; /* Ensure text visible */
 }
 
 .animate-pop {
@@ -12849,4 +12845,4 @@ select.dp-year-select {
 @keyframes popIn {
   0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
-}
+}

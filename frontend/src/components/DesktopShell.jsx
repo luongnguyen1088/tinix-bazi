@@ -165,17 +165,26 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
                     <div className="user-dropdown-overlay" onClick={() => setShowDropdown(false)}>
                         <div className="desktop-user-dropdown" onClick={(e) => e.stopPropagation()}>
                             <div className="dropdown-user-info">
-                                <strong>{user?.role === 'admin' ? 'System Admin' : (user?.name || user?.email)}</strong>
+                                <strong>{user?.role === 'admin' ? '🔥 System Admin' : (user?.name || user?.email)}</strong>
                                 <p>💎 {user?.credits || 0} Linh Thạch</p>
                             </div>
                             <hr />
+                            <button className="dropdown-item" onClick={() => { setShowTopupModal(true); setShowDropdown(false); }}>
+                                <span className="item-icon">💳</span> Nạp Linh Thạch (VietQR)
+                            </button>
                             <button className="dropdown-item" onClick={() => { setShowProfileModal(true); setShowDropdown(false); }}>
                                 <span className="item-icon">👤</span> Thông tin tài khoản
                             </button>
                             <button className="dropdown-item" onClick={() => { navigate('/lich-su'); setShowDropdown(false); }}>
                                 <span className="item-icon">📜</span> Lịch sử tư vấn
                             </button>
-                            <button className="dropdown-item" onClick={() => { logout(); setShowDropdown(false); }}>
+                            {user?.role === 'admin' && (
+                                <button className="dropdown-item" onClick={() => { navigate('/admin'); setShowDropdown(false); }}>
+                                    <span className="item-icon">🛡️</span> Trang Quản Trị
+                                </button>
+                            )}
+                            <hr />
+                            <button className="dropdown-item logout" onClick={() => { logout(); setShowDropdown(false); }}>
                                 <span className="item-icon">🚪</span> Đăng xuất
                             </button>
                         </div>
