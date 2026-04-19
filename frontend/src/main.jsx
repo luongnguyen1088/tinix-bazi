@@ -5,7 +5,7 @@ import App from './App.jsx'
 import './index.css'
 
 // IMPORTANT: User needs to set VITE_GOOGLE_CLIENT_ID in their environment
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID_HERE";
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 console.log("🚀 BaZi App Version 3.0 - Loaded");
 ReactDOM.createRoot(document.getElementById('root')).render(
