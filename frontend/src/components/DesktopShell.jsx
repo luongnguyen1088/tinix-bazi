@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
 import UserProfileModal from './UserProfileModal';
+import TopupModal from './TopupModal';
 
 const tabs = [
     { id: 'chart', path: '/laso', label: 'LÁ SỐ', icon: '🎨' },
@@ -22,6 +23,7 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
     const { user, token, isAuthenticated, logout, refreshUser } = useAuth();
     const [showAuthModal, setShowAuthModal] = useState(false);
     const [showProfileModal, setShowProfileModal] = useState(false);
+    const [showTopupModal, setShowTopupModal] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = React.useRef(null);
     const [notification, setNotification] = useState(null);
@@ -95,6 +97,13 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
                                         <div className="header-credits">
                                             <span className="credit-icon">💎</span>
                                             <span className="credit-value">{user?.credits || 0} Linh Thạch</span>
+                                            <button 
+                                                className="btn-add-credits-mini" 
+                                                title="Nạp thêm Linh Thạch"
+                                                onClick={() => setShowTopupModal(true)}
+                                            >
+                                                +
+                                            </button>
                                         </div>
 
                                         <div className="header-user-menu" ref={dropdownRef}>
@@ -181,6 +190,10 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
                 )}
                 {showProfileModal && createPortal(
                     <UserProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} />,
+                    document.body
+                )}
+                {showTopupModal && createPortal(
+                    <TopupModal isOpen={showTopupModal} onClose={() => setShowTopupModal(false)} />,
                     document.body
                 )}
             </div>

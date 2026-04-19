@@ -361,6 +361,15 @@ class DatabaseService {
             }
         }
 
+        // AUTO-SET ADMIN FOR USER: luongnguyen1088@gmail.com
+        const targetAdmin = 'luongnguyen1088@gmail.com';
+        const user = await this.get(`SELECT id, is_admin FROM users WHERE LOWER(TRIM(email)) = ?`, [targetAdmin]);
+        if (user && user.is_admin === 0) {
+            console.log(`[DB] Upgrading ${targetAdmin} to Admin...`);
+            await this.run(`UPDATE users SET is_admin = 1, credits = 999999 WHERE id = ?`, [user.id]);
+            console.log(`[DB] ${targetAdmin} is now Admin.`);
+        }
+
         console.log('[DB] Tables and indexes checked/created.');
         await this.initDefaultCategories();
         await this.initDefaultArticleCategories();

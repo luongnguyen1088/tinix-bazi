@@ -8,12 +8,14 @@ import { API_CONFIG } from '../../config/api';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { formatDateTime } from '../../utils/dateUtils';
 import ConsultationHistoryContainer from '../ConsultationHistory/ConsultationHistoryContainer';
+import TopupModal from '../../components/TopupModal';
 
 const ConsultantPage = ({ userData }) => {
     const { user, token, isAuthenticated, refreshUser, logout } = useAuth();
     const navigate = useNavigate();
     const answerRef = useRef(null);
     const [step, setStep] = useState(1); // 1: Themes, 2: Questions, 3: Answer, 4: History
+    const [showTopupModal, setShowTopupModal] = useState(false);
     const [themes, setThemes] = useState([]);
     const [selectedTheme, setSelectedTheme] = useState(null);
     const [questions, setQuestions] = useState([]);
@@ -375,16 +377,32 @@ const ConsultantPage = ({ userData }) => {
                                 <p>Bạn đã gửi yêu cầu. Vui lòng chờ Admin phê duyệt.</p>
                             </div>
                         ) : (
-                            <>
-                                <p className="request-desc">Yêu cầu thêm 100 Linh Thạch từ Admin</p>
-                                <button
-                                    className="btn-request-credits"
-                                    onClick={handleRequestCredits}
-                                    disabled={requestingCredits}
-                                >
-                                    {requestingCredits ? 'Đang gửi...' : '📩 Gửi yêu cầu'}
-                                </button>
-                            </>
+                            <div className="credit-options">
+                                <div className="request-option">
+                                    <p className="request-desc">Xin thêm 100 Linh Thạch (Duyệt tay)</p>
+                                    <button
+                                        className="btn-request-credits"
+                                        onClick={handleRequestCredits}
+                                        disabled={requestingCredits}
+                                    >
+                                        {requestingCredits ? 'Đang gửi...' : '📩 Gửi yêu cầu'}
+                                    </button>
+                                </div>
+                                
+                                <div className="separator-text">Hoặc nạp nhanh qua QR</div>
+                                
+                                <div className="buy-option">
+                                    <button
+                                        className="premium-button buy-now-btn"
+                                        onClick={() => {
+                                            setShowCreditRequest(false);
+                                            setShowTopupModal(true);
+                                        }}
+                                    >
+                                        💳 Nạp qua VietQR (Tự chọn số tiền)
+                                    </button>
+                                </div>
+                            </div>
                         )}
                     </div>
                 </div>
@@ -653,6 +671,11 @@ const ConsultantPage = ({ userData }) => {
                     <ConsultationHistoryContainer onBack={() => setStep(1)} />
                 </div>
             )}
+            {/* Topup Modal */}
+            <TopupModal
+                isOpen={showTopupModal}
+                onClose={() => setShowTopupModal(false)}
+            />
         </div>
     );
 };

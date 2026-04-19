@@ -12,6 +12,7 @@ const adminRoutes = require('./src/routes/admin.routes');
 const authRoutes = require('./src/routes/auth.routes');
 const articlesRoutes = require('./src/routes/articles.routes');
 const queRoutes = require('./src/routes/que.routes');
+const paymentRoutes = require('./src/routes/payment.routes');
 // const dailyRoutes = require('./src/routes/daily.routes');
 const dbService = require('./src/services/database.service');
 
@@ -96,6 +97,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authLimiter, authRoutes);  // Strict auth rate limit
 app.use('/api/articles', articlesRoutes);  // Articles routes
 app.use('/api/que', queRoutes);
+app.use('/api/payment', paymentRoutes);
 // app.use('/api/daily', dailyRoutes);
 
 
