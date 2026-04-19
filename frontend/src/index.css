@@ -13664,4 +13664,411 @@ select.dp-year-select {
   }
 }
 
+/* ========== Desktop density refinement ========== */
+@media (min-width: 1024px) {
+  .app-container {
+    max-width: 1440px;
+    width: min(96vw, 1440px);
+    padding: 0.75rem 0.9rem 1.25rem;
+  }
+
+  .desktop-content {
+    padding: 0.25rem 0 1.25rem;
+  }
+
+  .glass-card {
+    border-radius: 16px;
+  }
+
+  .action-bar {
+    top: 10px;
+    padding: 0.8rem 1.1rem;
+    margin-bottom: 0.9rem;
+    border-radius: 16px;
+  }
+
+  .mini-brand {
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+  }
+
+  .header-right {
+    gap: 0.8rem;
+  }
+
+  .header-credits {
+    gap: 6px;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.12);
+  }
+
+  .header-credits .credit-icon {
+    font-size: 1rem;
+  }
+
+  .user-dropdown-trigger {
+    gap: 0.55rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .user-avatar-icon {
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .user-name-label {
+    font-size: 0.84rem;
+  }
+
+  .main-nav-tabs {
+    gap: 0.45rem;
+    padding: 0.4rem;
+    margin-bottom: 1.15rem;
+    justify-content: flex-start;
+  }
+
+  .nav-tab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-width: 0;
+    padding: 0.72rem 0.85rem;
+    border-radius: 12px;
+    flex: 1;
+  }
+
+  .nav-tab-btn .tab-icon {
+    font-size: 0.95rem;
+  }
+
+  .nav-tab-btn .tab-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .chart-actions-bar {
+    margin-bottom: 0.8rem;
+    padding: 0;
+  }
+
+  .chart-actions-right {
+    gap: 0.55rem;
+  }
+
+  .premium-button,
+  .btn-vanhan-inline,
+  .chart-action-btn {
+    padding: 0.62rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+  }
+
+  .premium-button.small {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.72rem;
+  }
+
+  .chart-top-row {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .chart-info-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .radar-card {
+    padding: 1rem 1rem 1.1rem;
+  }
+
+  .radar-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 1rem;
+  }
+
+  .info-grid {
+    gap: 0.55rem;
+  }
+
+  .info-item {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+  }
+
+  .info-item .label {
+    font-size: 0.68rem;
+  }
+
+  .info-item .value {
+    font-size: 0.88rem;
+    line-height: 1.25;
+  }
+
+  .consultant-container {
+    max-width: 1180px;
+    padding: 0.25rem 0;
+  }
+
+  .consult-header {
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 16px;
+  }
+
+  .breadcrumb {
+    gap: 10px;
+    font-size: 0.76rem;
+  }
+
+  .current-theme-badge {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .themes-grid {
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .theme-card {
+    padding: 1.2rem 1rem;
+    border-radius: 18px;
+  }
+
+  .theme-card .theme-icon {
+    font-size: 2.25rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .theme-card h3 {
+    font-size: 0.98rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .theme-card p {
+    font-size: 0.7rem;
+  }
+
+  .questions-area,
+  .answer-area {
+    padding: 1.25rem 1.35rem;
+    border-radius: 18px;
+  }
+
+  .search-bar {
+    padding: 1rem 0 0.85rem;
+  }
+
+  .questions-list {
+    max-height: 560px;
+    padding: 0.75rem 0 0;
+  }
+
+  .question-item {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    gap: 10px;
+  }
+
+  .persona-selector-section {
+    padding-top: 0.35rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .persona-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 0.85rem;
+    justify-content: stretch;
+  }
+
+  .persona-card {
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+  }
+
+  .persona-icon-circle {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .persona-name {
+    font-size: 0.88rem;
+  }
+
+  .persona-desc {
+    font-size: 0.74rem;
+  }
+
+  .custom-title,
+  .custom-inline-title,
+  .follow-up-title {
+    font-size: 0.9rem;
+  }
+
+  .custom-question-section.top {
+    margin-bottom: 1rem;
+  }
+
+  .custom-question-form,
+  .custom-inline-form {
+    gap: 0.85rem;
+    margin-top: 0.85rem;
+  }
+
+  .custom-textarea,
+  .custom-inline-textarea,
+  .glass-input {
+    padding: 0.78rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .custom-textarea {
+    min-height: 88px;
+  }
+
+  .btn-ask-custom,
+  .custom-inline-btn {
+    padding: 0.72rem 1rem;
+    border-radius: 10px;
+    font-size: 0.84rem;
+  }
+
+  .asked-question {
+    font-size: 1.02rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
+  }
+
+  .paragraph-box {
+    padding: 0.95rem 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.68;
+    font-size: 0.96rem;
+  }
+
+  .ai-response-formatted {
+    line-height: 1.72;
+    text-wrap: pretty;
+  }
+
+  .ai-response-formatted .ai-heading {
+    margin: 1rem 0 0.65rem 0;
+    font-size: 1rem;
+  }
+
+  .ai-response-formatted h3.ai-heading {
+    font-size: 1.08rem;
+    padding: 0.7rem 0.9rem;
+    margin-top: 1.25rem;
+  }
+
+  .ai-response-formatted h4.ai-heading {
+    font-size: 0.96rem;
+  }
+
+  .follow-up-section,
+  .custom-question-inline {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .follow-up-items {
+    gap: 0.6rem;
+  }
+
+  .follow-up-btn {
+    padding: 0.8rem 0.95rem;
+    border-radius: 10px;
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .credit-badge {
+    font-size: 0.66rem;
+    padding: 0.14rem 0.42rem;
+  }
+
+  .answer-footer {
+    margin-top: 1.4rem;
+  }
+
+  .article-page {
+    padding: 1rem 0.5rem 1.5rem;
+  }
+
+  .article-container {
+    max-width: 940px;
+  }
+
+  .article-breadcrumb {
+    margin-bottom: 1rem;
+    font-size: 0.78rem;
+  }
+
+  .article-detail {
+    padding: 1.35rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .article-detail-header,
+  .article-detail-image {
+    margin-bottom: 1.25rem;
+  }
+
+  .article-detail-title {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .article-detail-meta {
+    gap: 1rem;
+    font-size: 0.82rem;
+  }
+
+  .article-detail-content {
+    font-size: 0.98rem;
+    line-height: 1.72;
+  }
+
+  .article-detail-content h2,
+  .article-detail-content h3 {
+    margin: 1.1rem 0 0.75rem 0;
+  }
+
+  .article-related {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.3rem;
+    border-radius: 16px;
+  }
+
+  .related-title {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .related-grid {
+    gap: 1rem;
+  }
+}
+
 

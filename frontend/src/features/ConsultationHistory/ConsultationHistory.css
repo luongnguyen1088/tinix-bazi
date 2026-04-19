@@ -439,3 +439,219 @@
         gap: 1rem;
     }
 }
+
+@media (min-width: 1024px) {
+    .consultation-history-container {
+        gap: 1rem;
+        min-height: 320px;
+    }
+
+    .history-list-header {
+        margin-bottom: 0.75rem;
+    }
+
+    .history-list-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .btn-back-link {
+        font-size: 0.88rem;
+    }
+
+    .history-grid {
+        gap: 0.75rem;
+    }
+
+    .history-page {
+        max-width: 1360px;
+        padding: 0.5rem 0;
+    }
+
+    .history-page .page-header {
+        padding: 1.4rem 1.6rem;
+        margin-bottom: 1.2rem;
+        border-radius: 18px;
+    }
+
+    .history-page .header-info h2 {
+        font-size: 2rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .history-page .header-info p {
+        font-size: 0.95rem;
+    }
+
+    .user-badge {
+        padding: 0.55rem 1rem;
+        font-size: 0.84rem;
+    }
+
+    .history-container-wrapper {
+        padding: 1.2rem;
+    }
+
+    .history-card {
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+    }
+
+    .history-card:hover {
+        transform: translateX(6px);
+    }
+
+    .persona-icon-small {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+        margin-right: 0.9rem;
+    }
+
+    .card-main {
+        gap: 0.35rem;
+    }
+
+    .history-question-row {
+        gap: 0.55rem;
+    }
+
+    .q-type-badge {
+        font-size: 0.62rem;
+        padding: 2px 7px;
+    }
+
+    .question-text-truncate {
+        font-size: 0.96rem;
+        max-width: 620px;
+    }
+
+    .history-meta-row {
+        gap: 1rem;
+        font-size: 0.78rem;
+    }
+
+    .card-arrow {
+        font-size: 1.15rem;
+        margin-left: 0.6rem;
+    }
+
+    .history-detail-view {
+        gap: 1rem;
+    }
+
+    .detail-title h3 {
+        font-size: 1.45rem;
+    }
+
+    .question-info {
+        margin-bottom: 1.2rem;
+        padding-bottom: 1rem;
+    }
+
+    .q-row {
+        margin-bottom: 0.55rem;
+    }
+
+    .q-row p {
+        font-size: 1rem;
+    }
+
+    .q-meta {
+        gap: 1.2rem;
+        font-size: 0.84rem;
+    }
+
+    .charts-section h4,
+    .answer-section h4 {
+        margin-bottom: 0.9rem;
+        font-size: 0.96rem;
+        letter-spacing: 0.08em;
+    }
+
+    .charts-container {
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .chart-display-mini {
+        max-width: 380px;
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .chart-display-mini .chart-header {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.45rem;
+    }
+
+    .chart-display-mini .pillars-row {
+        gap: 0.35rem;
+    }
+
+    .connector-badge {
+        font-size: 0.86rem;
+        padding: 0.4rem 0.65rem;
+        margin: 0 0.65rem;
+    }
+
+    .mini-pillar {
+        padding: 0.4rem;
+        border-radius: 7px;
+    }
+
+    .mini-pillar .pillar-label {
+        font-size: 0.55rem;
+    }
+
+    .mini-pillar .pillar-gan,
+    .mini-pillar .pillar-zhi {
+        font-size: 0.92rem;
+    }
+
+    .mini-dm-strength {
+        margin-top: 0.75rem;
+        padding-top: 0.45rem;
+        font-size: 0.78rem;
+    }
+
+    .answer-section {
+        padding-top: 1.2rem;
+    }
+
+    .answer-paragraph {
+        margin-bottom: 1rem;
+        font-size: 0.98rem;
+        line-height: 1.72;
+    }
+
+    .empty-history {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .empty-history p {
+        font-size: 0.96rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .que-detail-box {
+        gap: 1.2rem;
+        padding: 1rem 1.1rem;
+        margin-bottom: 1.2rem;
+        border-radius: 16px;
+    }
+
+    .que-name {
+        font-size: 1.5rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .que-quality-badge {
+        padding: 0.28rem 0.75rem;
+        font-size: 0.74rem;
+    }
+}
