@@ -50,9 +50,8 @@
   position: relative;
   background: var(--bg-dark);
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  overscroll-behavior-y: contain;
+  
+  
 }
 
 .mobile-top-fixed {
@@ -87,8 +86,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
+  
   gap: 12px;
 }
 
@@ -220,8 +218,7 @@
 }
 
 .dropdown-header {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 12px;
   text-align: center;
@@ -274,8 +271,7 @@
 }
 
 .dropdown-actions {
-  display: flex;
-  flex-direction: column;
+  
   gap: 10px;
 }
 
@@ -308,7 +304,7 @@
 /* Content Padding Adjustments */
 .mobile-content {
   flex: 1;
-  overflow-y: auto;
+  
   padding: 16px;
   padding-top: 80px; /* Reduced from 150px */
   padding-bottom: calc(var(--bottom-nav-height) + 16px);
@@ -540,8 +536,7 @@
 }
 
 .header-nav-item {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 2px;
   padding: 6px 12px;
@@ -666,8 +661,7 @@
 }
 
 .bottom-nav-item {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 3px;
   padding: 6px 12px;
@@ -734,8 +728,7 @@
 .bottom-nav-center {
   position: relative;
   top: -20px;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 4px;
   text-decoration: none;
@@ -811,7 +804,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
-  overflow-y: auto;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1072,8 +1065,7 @@ select option,
 
 .nav-tab-btn {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 0.4rem;
   padding: 1rem;
@@ -1150,8 +1142,7 @@ select option,
 }
 
 .input-group {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.6rem;
 }
 
@@ -1367,8 +1358,7 @@ select option,
   background: rgba(255, 255, 255, 0.03);
   border-radius: 6px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
   gap: 1px;
@@ -1483,7 +1473,7 @@ select option,
 
 .dp-year-select {
   max-height: 200px;
-  overflow-y: auto;
+  
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
@@ -1556,8 +1546,7 @@ select option,
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
   gap: 2px;
@@ -1769,8 +1758,7 @@ select option,
   padding: 1.2rem 0.25rem;
   border-radius: 12px;
   border: 1px solid var(--glass-border);
-  display: flex;
-  flex-direction: column;
+  
   transition: all 0.3s ease;
 }
 
@@ -1789,8 +1777,7 @@ select option,
 }
 
 .cell-main {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
   align-items: center;
 }
@@ -1869,8 +1856,7 @@ select option,
 
 /* ========== Analysis Sections ========== */
 .analysis-sections {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -1922,8 +1908,7 @@ select option,
 }
 
 .stars-grid {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -1998,8 +1983,7 @@ select option,
 .radar-card {
   padding: 2rem;
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
 }
@@ -2020,8 +2004,7 @@ select option,
 }
 
 .info-item {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.2rem;
   padding: 0.6rem 1rem;
   background: rgba(255, 255, 255, 0.02);
@@ -2237,8 +2220,7 @@ select option,
 .element-pill-content {
   flex: 1;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.25rem;
 }
 
@@ -2350,8 +2332,7 @@ select option,
 }
 
 .cycle-main {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.4rem;
 }
 
@@ -2384,8 +2365,7 @@ select option,
 
 /* Detailed Luck View */
 .detailed-years-view {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.2rem;
 }
 
@@ -2453,8 +2433,7 @@ select option,
 }
 
 .y-main {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.2rem;
 }
 
@@ -2511,8 +2490,7 @@ select option,
 
 .luan-giai-accordion {
   padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -2593,8 +2571,7 @@ select option,
 
 .matrix-sidebar {
   width: 260px;
-  display: flex;
-  flex-direction: column;
+  
   padding: 0;
   flex-shrink: 0;
 }
@@ -2614,8 +2591,7 @@ select option,
 
 .matrix-nav-list {
   padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.35rem;
 }
 
@@ -2658,8 +2634,7 @@ select option,
 
 .matrix-display-area {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
   overflow: hidden;
 }
 
@@ -2680,13 +2655,12 @@ select option,
 
 .matrix-body {
   flex: 1;
-  overflow-y: auto;
+  
   padding: 1rem 1.5rem;
 }
 
 .matrix-content-list {
-  display: flex;
-  flex-direction: column;
+  
 }
 
 .matrix-info-line {
@@ -2783,8 +2757,7 @@ select option,
 }
 
 .picker-group {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.6rem;
 }
 
@@ -2815,8 +2788,7 @@ select option,
 }
 
 .date-sections-accordion {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.2rem;
 }
 
@@ -3032,8 +3004,7 @@ select option,
 }
 
 .calendar-container {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -3062,8 +3033,7 @@ select option,
 }
 
 .month-year {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
 }
 
@@ -3128,8 +3098,7 @@ select option,
   padding: 0.25rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
   position: relative;
@@ -3562,8 +3531,7 @@ select option,
 
 .mode-tab {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   padding: 0.8rem;
   border: none;
@@ -3607,8 +3575,7 @@ select option,
 .selection-bar .picker-group {
   flex: 1;
   min-width: 120px;
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -3726,8 +3693,7 @@ select option,
 }
 
 .generic-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 12px;
 }
 
@@ -3748,8 +3714,7 @@ select option,
 
 /* Modern Accordion */
 .modern-accordion {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -3874,8 +3839,7 @@ select option,
 /* Luck Cycles Container Refinement */
 .luck-cycles-container {
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.5rem;
   width: 100%;
 }
@@ -3923,8 +3887,7 @@ select option,
 }
 
 .natal-pillar-card {
-  display: flex;
-  flex-direction: column;
+  
   padding: 1rem;
   text-align: center;
   min-height: 160px;
@@ -3949,8 +3912,7 @@ select option,
 }
 
 .p-main {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 0.2rem;
 }
@@ -4065,8 +4027,7 @@ select option,
 
 .cycle-card {
   padding: 0.8rem 0.4rem;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -4096,8 +4057,7 @@ select option,
 
 .cycle-main {
   margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.1rem;
 }
 
@@ -4109,8 +4069,7 @@ select option,
 }
 
 .cycle-footer {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.1rem;
 }
 
@@ -4167,8 +4126,7 @@ select option,
 }
 
 .panel-content {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -4253,8 +4211,7 @@ select option,
   max-height: 90vh;
   border: 1px solid rgba(226, 192, 68, 0.2);
   background: linear-gradient(145deg, #0f120f 0%, #080a08 100%);
-  display: flex;
-  flex-direction: column;
+  
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -4299,7 +4256,7 @@ select option,
 .modal-body {
   padding: 2rem;
   background: transparent;
-  overflow-y: auto;
+  
 }
 
 /* Info Regions */
@@ -4346,8 +4303,7 @@ select option,
 }
 
 .stat-item {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.2rem;
 }
 
@@ -4559,8 +4515,7 @@ select option,
 /* ========== Classic Texts / Wisdom Page ========== */
 .classic-texts-container {
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.5rem;
 }
 
@@ -4597,8 +4552,7 @@ select option,
 }
 
 .stat-box {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   padding: 1rem 1.5rem;
   background: rgba(0, 0, 0, 0.3);
@@ -5106,8 +5060,7 @@ select option,
 }
 
 .floating-content {
-  display: flex;
-  flex-direction: column;
+  
   align-items: flex-start;
 }
 
@@ -5227,8 +5180,7 @@ select option,
 
 
 .pdf-export-dropdown .export-option {
-  display: flex;
-  flex-direction: column;
+  
   align-items: flex-start;
   gap: 0.3rem;
   padding: 1rem;
@@ -5304,8 +5256,7 @@ select option,
    ======================================== */
 .matrix-analysis-pro {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.5rem;
 }
 
@@ -5323,8 +5274,7 @@ select option,
 .matrix-tab-btn {
   flex: 1;
   min-width: 100px;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 0.3rem;
   padding: 0.8rem 0.5rem;
@@ -5413,8 +5363,7 @@ select option,
 }
 
 .stat-card {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   gap: 0.5rem;
   padding: 1.5rem 1rem;
@@ -5530,8 +5479,7 @@ select option,
 }
 
 .content-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -5910,8 +5858,7 @@ select option,
 }
 
 .element-scores-grid {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.6rem;
 }
 
@@ -6037,8 +5984,7 @@ select option,
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.1rem;
 }
 
@@ -6090,8 +6036,7 @@ select option,
 }
 
 .mini-pillar-compact .pillar-chars {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.1rem;
 }
 
@@ -6197,8 +6142,7 @@ select option,
 }
 
 .section-card .card-item {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.2rem;
   padding: 0.6rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -6264,8 +6208,7 @@ select option,
 
 /* Enhanced Content List */
 .content-list.enhanced {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -6434,8 +6377,7 @@ select option,
 }
 
 .thap-than-chip {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -6553,8 +6495,7 @@ select option,
   border: 1px solid rgba(46, 204, 113, 0.2);
   border-radius: 10px;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   text-align: center;
 }
@@ -6660,8 +6601,7 @@ select option,
 }
 
 .ts-pillar-card {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -6893,8 +6833,7 @@ select option,
 }
 
 .control-group {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -7139,8 +7078,7 @@ select option,
 }
 
 .structured-interpretation {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.8rem;
 }
 
@@ -7382,7 +7320,7 @@ select option,
 
 .questions-list {
   max-height: 500px;
-  overflow-y: auto;
+  
   padding: 1rem;
 }
 
@@ -7500,8 +7438,7 @@ select option,
 }
 
 .custom-question-form {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -7824,8 +7761,7 @@ select option,
 }
 
 .rc-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.75rem;
 }
 
@@ -7945,8 +7881,7 @@ select option,
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-direction: column;
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -8277,8 +8212,7 @@ select option,
 }
 
 .question-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -8446,7 +8380,7 @@ select option,
   max-width: 500px;
   width: 100%;
   max-height: 85vh;
-  overflow-y: auto;
+  
   position: relative;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   animation: modalSlideUp 0.3s ease;
@@ -8562,8 +8496,7 @@ select option,
 
 /* Request List */
 .request-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -8591,8 +8524,7 @@ select option,
 }
 
 .request-user {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.25rem;
   margin-bottom: 0.5rem;
 }
@@ -8643,7 +8575,7 @@ select option,
 
 .consultation-history {
   max-height: 300px;
-  overflow-y: auto;
+  
 }
 
 .history-item {
@@ -8813,7 +8745,7 @@ select option,
 
 .customer-history-tab .consultation-history {
   max-height: 400px;
-  overflow-y: auto;
+  
 }
 
 /* Compact Table for Split View */
@@ -9165,8 +9097,7 @@ select option,
 }
 
 .bar-item {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   flex: 1;
   height: 100%;
@@ -9202,8 +9133,7 @@ select option,
 
 /* Horizontal Bar Chart */
 .horizontal-chart {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.75rem;
 }
 
@@ -9269,7 +9199,7 @@ a.category-card {
   padding-top: 5vh;
   z-index: 9999;
   animation: fadeIn 0.2s ease;
-  overflow-y: auto;
+  
 }
 
 .auth-modal {
@@ -9584,8 +9514,7 @@ a.category-card {
 
 /* Admin Credit Request Cards */
 .request-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1rem;
 }
 
@@ -9603,8 +9532,7 @@ a.category-card {
 
 .request-info {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -10008,8 +9936,7 @@ a.category-card {
 }
 
 .history-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.75rem;
 }
 
@@ -10265,8 +10192,7 @@ a.category-card {
 }
 
 .follow-up-items {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.8rem;
 }
 
@@ -10683,7 +10609,7 @@ a.category-card {
   width: 90%;
   max-width: 500px;
   max-height: 90vh;
-  overflow-y: auto;
+  
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
@@ -11005,8 +10931,7 @@ a.category-card {
 }
 
 .custom-inline-form {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.75rem;
 }
 
@@ -11070,13 +10995,11 @@ a.category-card {
 
 .questions-area {
   padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
+  
 }
 
 .custom-question-form {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.25rem;
   margin-top: 1.25rem;
 }
@@ -11182,7 +11105,7 @@ a.category-card {
   max-width: 600px;
   width: 100%;
   max-height: 85vh;
-  overflow-y: auto;
+  
   position: relative;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
@@ -11229,8 +11152,7 @@ a.category-card {
 }
 
 .persona-options {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.75rem;
 }
 
@@ -11388,8 +11310,7 @@ a.category-card {
 
 /* ========== LOADING PROGRESS VIEW ========== */
 .loading-progress-view {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
@@ -11577,7 +11498,7 @@ a.category-card {
   padding: 1.5rem;
   margin: 1rem 0;
   max-height: 55vh;
-  overflow-y: auto;
+  
   position: relative;
 }
 
@@ -11786,8 +11707,7 @@ a.category-card {
 }
 
 .result-view .follow-up-section .follow-up-items {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.5rem;
 }
 
@@ -11826,8 +11746,7 @@ a.category-card {
 
 /* ========== LOADING PROGRESS VIEW ========== */
 .loading-progress-view {
-  display: flex;
-  flex-direction: column;
+  
   align-items: center;
   padding: 2rem;
   margin-top: 1rem;
@@ -12179,8 +12098,7 @@ a.category-card {
 }
 
 .bazi-toc-desktop .toc-list {
-  display: flex;
-  flex-direction: column;
+  
   gap: 0.25rem;
 }
 
@@ -12224,8 +12142,7 @@ a.category-card {
   transform: translateX(calc(-50% + 185px));
   /* Center of shell + offset to right */
   z-index: 2000;
-  display: flex;
-  flex-direction: column;
+  
   align-items: flex-end;
   gap: 1rem;
 }
@@ -12272,7 +12189,7 @@ a.category-card {
   right: 0;
   width: 220px;
   max-height: 70vh;
-  overflow-y: auto;
+  
   padding: 1rem;
   display: none;
   flex-direction: column;
@@ -12360,8 +12277,7 @@ a.category-card {
 }
 
 .articles-header {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.25rem;
   margin-bottom: 2rem;
 }
@@ -12485,8 +12401,7 @@ a.category-card {
 }
 
 .articles-sidebar {
-  display: flex;
-  flex-direction: column;
+  
   gap: 1.25rem;
 }
 
@@ -12532,8 +12447,7 @@ a.category-card {
 
 .article-sidebar-body {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  
   justify-content: center;
 }
 
@@ -12883,8 +12797,7 @@ select.dp-year-select {
 }
 
 .credit-options {
-  display: flex;
-  flex-direction: column;
+  
   gap: 15px;
   width: 100%;
   margin-top: 15px;
@@ -12946,4 +12859,5 @@ select.dp-year-select {
 .auth-social-separator { position: relative; text-align: center; margin: 20px 0; }
 .auth-social-separator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255, 255, 255, 0.1); }
 .auth-social-separator span { position: relative; background: #1a1a2e; padding: 0 10px; color: #94a3b8; font-size: 0.85rem; }
-.auth-social-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+.auth-social-actions {  align-items: center; gap: 12px; width: 100%; }
+
