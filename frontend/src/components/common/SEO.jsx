@@ -12,13 +12,13 @@ const SEO = ({
     canonical,
     structuredData
 }) => {
-    const defaultTitle = "Huyền Cơ Bát Tự - Luận Giải Mệnh Lý Chuyên Sâu";
-    const defaultDescription = "Ứng dụng luận giải Bát Tự, Tứ Trụ, Xem Ngày Tốt Xấu và Tư Vấn Phong Thủy chuyên sâu với công nghệ AI.";
-    const defaultKeywords = "bát tự, tứ trụ, tử vi, xem mệnh, phong thủy, chọn ngày tốt, huyền cơ bát tự";
-    const defaultImage = "https://huyencobattu.com/og-image-default.jpg";
-    const siteUrl = "https://huyencobattu.com";
+    const defaultTitle = "MỆNH SỐ | Giải Mã Vận Mệnh Bằng AI";
+    const defaultDescription = "Ứng dụng luận giải Bát Tự, Tứ Trụ, Xem Ngày Tốt Xấu và Tư Vấn Phong Thủy chuyên sâu với công nghệ AI hàng đầu.";
+    const defaultKeywords = "bát tự, tứ trụ, tử vi, xem mệnh, phong thủy, chọn ngày tốt, mệnh số, menhso.org";
+    const defaultImage = "https://menhso.org/og-image-default.jpg";
+    const siteUrl = "https://menhso.org";
 
-    const finalTitle = title ? `${title} | Huyền Cơ Bát Tự` : defaultTitle;
+    const finalTitle = title || defaultTitle;
     const finalDescription = description || defaultDescription;
     const finalImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : defaultImage;
     const finalUrl = url ? (url.startsWith('http') ? url : `${siteUrl}${url}`) : siteUrl;
@@ -37,10 +37,10 @@ const SEO = ({
             <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={finalImage} />
             <meta property="og:url" content={finalUrl} />
-            <meta property="og:site_name" content="Huyền Cơ Bát Tự" />
+            <meta property="og:site_name" content="MỆNH SỐ" />
 
             {/* Twitter tags */}
-            <meta name="twitter:creator" content={name || "Huyền Cơ Bát Tự"} />
+            <meta name="twitter:creator" content={name || "MỆNH SỐ"} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={finalTitle} />
             <meta name="twitter:description" content={finalDescription} />

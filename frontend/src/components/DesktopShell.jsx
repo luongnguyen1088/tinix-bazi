@@ -92,7 +92,7 @@ const DesktopShell = ({ children, hasData, onClearData }) => {
                     <>
                         <div className="action-bar glass-card">
                             <h1 className="mini-brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-                                HUYỀN CƠ BÁT TỰ
+                                MỆNH SỐ
                             </h1>
 
                             <div className="header-right">

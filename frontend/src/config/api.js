@@ -4,8 +4,8 @@
  */
 
 // Detect if running on production domain
-const isProduction = window.location.hostname === 'huyencobattu.com' ||
-    window.location.hostname === 'www.huyencobattu.com';
+const isProduction = window.location.hostname === 'menhso.org' ||
+    window.location.hostname === 'www.menhso.org';
 
 // API Base URL - use relative path for portability and prod-readiness
 // Vite dev server proxies /api to backends

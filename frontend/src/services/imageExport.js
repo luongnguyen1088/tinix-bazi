@@ -123,7 +123,7 @@ const createHTMLContent = (data) => {
         <div style="background: linear-gradient(135deg, #D4AF37 0%, #8B7355 50%, #D4AF37 100%); padding: 25px 30px; display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div style="width: 65px; height: 65px; background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                    <span style="font-size: 14px; font-weight: 900; color: #D4AF37; text-align: center; line-height: 1.1;">HUYỀN<br/>CƠ</span>
+                    <span style="font-size: 14px; font-weight: 900; color: #D4AF37; text-align: center; line-height: 1.1;">MỆNH<br/>SỐ</span>
                 </div>
                 <div>
                     <div style="font-size: 28px; font-weight: 900; color: #1a1a2e; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 1px 2px rgba(255,255,255,0.3);">TỨ TRỤ MỆNH BÀN</div>
@@ -278,7 +278,7 @@ const createHTMLContent = (data) => {
 
         <!-- Footer -->
         <div style="background: rgba(0,0,0,0.3); padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1);">
-            <div style="font-size: 10px; color: #666;">Lá số lập tại <span style="color: #D4AF37; font-weight: 600;">huyencobattu.com</span></div>
+            <div style="font-size: 10px; color: #666;">Lá số lập tại <span style="color: #D4AF37; font-weight: 600;">menhso.org</span></div>
             <div style="display: flex; gap: 12px; font-size: 10px;">
                 <span><span style="color: #78909C;">●</span> Kim</span>
                 <span><span style="color: #43A047;">●</span> Mộc</span>

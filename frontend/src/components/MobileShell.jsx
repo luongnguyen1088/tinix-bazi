@@ -121,7 +121,7 @@ const BrandBar = () => {
 
   return (
     <div className="mobile-brand-bar" onClick={() => navigate('/')}>
-      <h1 className="mobile-mini-brand">HUYỀN CƠ BÁT TỰ</h1>
+      <h1 className="mobile-mini-brand">MỆNH SỐ</h1>
     </div>
   );
 };

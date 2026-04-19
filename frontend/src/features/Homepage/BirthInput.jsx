@@ -161,8 +161,8 @@ const BirthInput = ({ onAnalyze, loading }) => {
             )}
 
             <header className="branding-header">
-                <h2 className="brand-title">HUYỀN CƠ BÁT TỰ</h2>
-                <p className="brand-tagline">huyencobattu.com • Khám phá mật mã cuộc đời</p>
+                <h2 className="brand-title">MỆNH SỐ</h2>
+                <p className="brand-tagline">menhso.org • Giải mã mật mã cuộc đời bằng AI</p>
             </header>
 
             {isAuthenticated && user ? (

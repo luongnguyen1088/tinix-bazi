@@ -60,23 +60,23 @@ const ArticlePage = () => {
             "description": article.excerpt || article.title,
             "author": {
                 "@type": "Person",
-                "name": article.author || "Huyền Cơ Bát Tự"
+                "name": article.author || "MỆNH SỐ"
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "Huyền Cơ Bát Tự",
+                "name": "MỆNH SỐ",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://huyencobattu.com/logo.png"
+                    "url": "https://menhso.org/logo.png"
                 }
             },
             "datePublished": formatDateISO(article.created_at),
             "dateModified": formatDateISO(article.updated_at || article.created_at),
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": `https://huyencobattu.com/bai-viet/${article.slug}`
+                "@id": `https://menhso.org/bai-viet/${article.slug}`
             },
-            "image": article.thumbnail || "https://huyencobattu.com/og-image-default.jpg"
+            "image": article.thumbnail || "https://menhso.org/og-image-default.jpg"
         };
     };
 
@@ -112,7 +112,7 @@ const ArticlePage = () => {
                 keywords={`bát tự, ${article.category_name || 'tử vi'}, ${article.title.toLowerCase()}`}
                 type="article"
                 url={`/bai-viet/${article.slug}`}
-                canonical={`https://huyencobattu.com/bai-viet/${article.slug}`}
+                canonical={`https://menhso.org/bai-viet/${article.slug}`}
                 image={article.thumbnail}
                 structuredData={getStructuredData()}
             />

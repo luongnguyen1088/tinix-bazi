@@ -13,7 +13,7 @@ const BANK_CONFIG = {
 router.get('/info', authMiddleware, (req, res) => {
     const userId = req.user.id;
     // Format nội dung chuyển khoản: BAZI [User ID]
-    const memo = `BAZI ${userId}`;
+    const memo = `MENHSO ${userId}`;
     
     // Tạo link VietQR động
     // Cấu trúc: https://img.vietqr.io/image/<BANK_ID>-<ACCOUNT_NO>-<TEMPLATE>.png?amount=<AMOUNT>&addInfo=<DESCRIPTION>&accountName=<ACCOUNT_NAME>
