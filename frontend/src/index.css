@@ -4256,7 +4256,8 @@ select option,
 .modal-body {
   padding: 2rem;
   background: transparent;
-  
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 /* Info Regions */
@@ -12860,4 +12861,5 @@ select.dp-year-select {
 .auth-social-separator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255, 255, 255, 0.1); }
 .auth-social-separator span { position: relative; background: #1a1a2e; padding: 0 10px; color: #94a3b8; font-size: 0.85rem; }
 .auth-social-actions {  align-items: center; gap: 12px; width: 100%; }
+
 
