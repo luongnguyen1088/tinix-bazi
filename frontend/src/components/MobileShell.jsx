@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import AuthModal from './AuthModal';
 import UserProfileModal from './UserProfileModal';
+import TopupModal from './TopupModal';
 
 // Header navigation items (4 items)
 const headerTabs = [
@@ -22,6 +23,7 @@ const StatusBar = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showTopupModal, setShowTopupModal] = useState(false);
 
   const handleLogout = async () => {
     await logout();
@@ -64,6 +66,9 @@ const StatusBar = () => {
               <span className="credits-value">💎 {user?.credits || 0}</span>
             </div>
             <div className="dropdown-actions">
+              <button className="dropdown-btn" onClick={() => { setShowTopupModal(true); setShowUserMenu(false); }}>
+                💳 Nạp Linh Thạch (VietQR)
+              </button>
               <button className="dropdown-btn" onClick={() => { setShowProfileModal(true); setShowUserMenu(false); }}>
                 👤 Thông tin tài khoản
               </button>
@@ -91,6 +96,14 @@ const StatusBar = () => {
         <UserProfileModal
           isOpen={showProfileModal}
           onClose={() => setShowProfileModal(false)}
+        />,
+        document.body
+      )}
+
+      {showTopupModal && createPortal(
+        <TopupModal
+          isOpen={showTopupModal}
+          onClose={() => setShowTopupModal(false)}
         />,
         document.body
       )}
